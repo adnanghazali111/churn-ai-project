@@ -1,0 +1,9 @@
+version: "3.9"
+
+services:
+  churn-ai:
+    build: .
+    container_name: churn-ai-container
+    ports:
+      - "8000:8000"
+    restart: always

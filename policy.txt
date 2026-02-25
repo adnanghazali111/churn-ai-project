@@ -1,0 +1,7 @@
+Company Retention Policy:
+
+1. Maximum discount allowed is 40%.
+2. Customers with more than 5 complaints are considered critical.
+3. Customers with more than 2 refunds are high risk.
+4. Customers under 3 months subscription are unstable users.
+5. Retention offers must sound empathetic and professional.

@@ -1,0 +1,7 @@
+ticket_text,complaint_count,refunds_taken,subscription_months,churn
+"I am very disappointed with your service",5,2,3,1
+"Great support, thanks!",0,0,24,0
+"I want refund immediately",3,1,2,1
+"Everything is fine",0,0,12,0
+"This is the worst experience ever",4,2,1,1
+"Love the product",0,0,18,0
