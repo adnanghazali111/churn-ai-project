@@ -1,5 +1,6 @@
 import logging
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
 from agents.feature_agent import FeatureAgent
@@ -44,10 +45,25 @@ class PredictionResponse(BaseModel):
 # ----------------------------
 app = FastAPI()
 
+# Enable CORS (Allow frontend access)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Allow all origins (for now)
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 feature_agent = FeatureAgent()
 risk_agent = RiskAgent()
 negotiator_agent = NegotiatorAgent()
 research_agent = ResearchAgent()
+
+
+# Optional root route
+@app.get("/")
+def home():
+    return {"message": "Churn AI is running successfully 🚀"}
 
 
 # ----------------------------
@@ -74,7 +90,7 @@ def predict(ticket: SupportTicket):
         risk_score, risk_level = risk_agent.calculate_risk(prob, complaint, refund)
         logger.info(f"Risk score: {risk_score} | Risk level: {risk_level}")
 
-        # Agent 3 → Policy Research
+        # Agent 3 → Policy Retrieval
         policy_text = research_agent.get_policy()
 
         # Agent 4 → Negotiation
