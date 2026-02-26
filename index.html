@@ -14,104 +14,130 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            color: #ffffff;
+            color: #111827;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            padding: 40px 20px;
-            background-color: #0f172a;
-            overflow-x: hidden;
-            position: relative;
+            padding: 20px 10px;
+            background-color: #e9ecef;
         }
 
-        /* Animated Background Elements */
-        .bg-shape {
-            position: fixed;
-            filter: blur(80px);
-            z-index: -1;
-            animation: float 10s infinite alternate ease-in-out;
-        }
-
-        .shape1 {
-            width: 500px;
-            height: 500px;
-            background: rgba(56, 189, 248, 0.4); 
-            top: -100px;
-            left: -100px;
-            border-radius: 50%;
-        }
-
-        .shape2 {
-            width: 600px;
-            height: 600px;
-            background: rgba(168, 85, 247, 0.3); 
-            bottom: -150px;
-            right: -100px;
-            border-radius: 50%;
-            animation-delay: -5s;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0) scale(1); }
-            100% { transform: translateY(50px) scale(1.1); }
-        }
-
-        /* Two-Column Dashboard Layout */
+        /* Main Split Card Container */
         .dashboard-wrapper {
             display: flex;
-            gap: 32px;
             width: 100%;
             max-width: 1100px;
-            z-index: 1;
+            background: #ffffff;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+            padding: 12px; 
+            gap: 20px;
         }
 
-        @media (max-width: 850px) {
+        @media (max-width: 900px) {
             .dashboard-wrapper {
                 flex-direction: column;
             }
         }
 
-        /* Glass Panels */
-        .panel {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 24px;
-            padding: 40px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-            animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .input-panel {
-            flex: 1.2;
-        }
-
-        .history-panel {
+        /* Left Branding Panel (Gradient & Description) */
+        .branding-panel {
             flex: 1;
+            background: linear-gradient(145deg, #fdf0e6 0%, #f4a27e 100%);
+            border-radius: 16px;
+            padding: 40px;
             display: flex;
             flex-direction: column;
-            max-height: 750px;
+            justify-content: space-between;
         }
 
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        h1, h2 {
+        .logo {
             font-weight: 600;
-            margin-bottom: 28px;
-            letter-spacing: -0.02em;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            font-size: 1.2rem;
+            color: #111;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
+            margin-bottom: 40px;
         }
 
-        h1 { font-size: 1.8rem; justify-content: center; }
-        h2 { font-size: 1.4rem; margin-bottom: 20px; }
+        .branding-text h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            line-height: 1.2;
+            color: #111;
+            letter-spacing: -0.02em;
+            margin-bottom: 20px;
+        }
+
+        .branding-desc {
+            color: #374151;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .branding-desc > p {
+            margin-bottom: 24px;
+        }
+
+        .feature-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .feature-list li {
+            position: relative;
+            padding-left: 28px;
+        }
+
+        .feature-list li::before {
+            content: '✦';
+            position: absolute;
+            left: 0;
+            top: 2px;
+            color: #d946ef;
+            font-size: 1.1rem;
+        }
+
+        .branding-footer {
+            margin-top: 40px;
+            font-size: 0.85rem;
+            color: #4b5563;
+            font-weight: 500;
+        }
+
+        /* Right Form Panel */
+        .form-panel {
+            flex: 1.1;
+            padding: 40px 40px 20px 20px;
+            display: flex;
+            flex-direction: column;
+            min-width: 0; 
+        }
+
+        .asterisk {
+            color: #e07a5f;
+            font-size: 2rem;
+            line-height: 1;
+            margin-bottom: 16px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            letter-spacing: -0.03em;
+        }
+
+        .subtitle {
+            font-size: 0.9rem;
+            color: #6b7280;
+            margin-bottom: 24px;
+            line-height: 1.5;
+        }
 
         .input-group {
             display: flex;
@@ -120,66 +146,82 @@
             margin-bottom: 24px;
         }
 
-        /* Glass Inputs */
+        .input-row {
+            display: flex;
+            gap: 16px;
+        }
+
         input, textarea {
             width: 100%;
-            padding: 14px 16px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: #ffffff;
-            border-radius: 12px;
+            padding: 14px 1.5px;
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            color: #111827;
+            border-radius: 8px;
             font-family: 'Inter', sans-serif;
             font-size: 0.95rem;
             outline: none;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
         }
 
-        input::placeholder, textarea::placeholder { color: rgba(255, 255, 255, 0.4); }
+        /* Ensure placeholder color is visible enough for the animation */
+        input::placeholder, textarea::placeholder { color: #9ca3af; }
 
         input:focus, textarea:focus {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 255, 255, 0.3);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px -10px rgba(0, 0, 0, 0.3);
+            border-color: #d1d5db;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
         }
 
         textarea {
             resize: vertical;
-            min-height: 120px;
+            min-height: 100px;
         }
 
-        /* Glass Button */
+        /* Button */
         button {
             width: 100%;
             padding: 16px;
-            background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0));
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            background-color: #0b0f19;
             color: #ffffff;
-            font-weight: 600;
+            font-weight: 500;
             font-size: 1rem;
-            border-radius: 12px;
+            border: none;
+            border-radius: 8px;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
+            box-shadow: 0 8px 16px rgba(11, 15, 25, 0.2);
         }
 
-        button:hover {
-            background: rgba(255, 255, 255, 0.15);
-            border-color: rgba(255, 255, 255, 0.3);
-            transform: translateY(-2px);
-        }
-
+        button:hover { background-color: #1f2937; }
         button:active { transform: translateY(1px); }
-        button:disabled { cursor: not-allowed; opacity: 0.6; }
+        button:disabled { cursor: not-allowed; opacity: 0.7; }
 
-        /* Current Result Pane */
+        .divider {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin: 32px 0 24px 0;
+        }
+        
+        .divider::before, .divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .divider span {
+            padding: 0 16px;
+            color: #9ca3af;
+            font-size: 0.8rem;
+        }
+
+        /* Results Pane */
         .result {
-            margin-top: 24px;
-            padding: 24px;
-            background: rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
+            margin-bottom: 20px;
+            padding: 20px;
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
             display: none; 
             opacity: 0;
             transform: translateY(10px);
@@ -194,55 +236,41 @@
 
         .result p {
             font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.7);
+            color: #4b5563;
             margin-bottom: 12px;
             display: flex;
             justify-content: space-between;
         }
 
-        .result strong { color: #ffffff; }
+        .result strong { color: #111827; }
 
-        /* History Panel specifics */
+        /* History List */
         .history-list {
-            flex: 1;
+            max-height: 200px;
             overflow-y: auto;
             display: flex;
             flex-direction: column;
             gap: 12px;
-            padding-right: 8px;
+            padding-right: 4px;
         }
 
-        /* Custom Scrollbar for Glass Theme */
-        .history-list::-webkit-scrollbar { width: 6px; }
+        .history-list::-webkit-scrollbar { width: 4px; }
         .history-list::-webkit-scrollbar-track { background: transparent; }
-        .history-list::-webkit-scrollbar-thumb {
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 10px;
-        }
-        .history-list::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.4); }
+        .history-list::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 10px; }
 
         .empty-history {
             text-align: center;
-            color: rgba(255, 255, 255, 0.4);
-            font-size: 0.9rem;
-            margin-top: 40px;
+            color: #9ca3af;
+            font-size: 0.85rem;
             font-style: italic;
         }
 
-        /* Individual History Item Cards */
         .history-item {
-            background: rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            padding: 16px;
-            border-radius: 12px;
+            border: 1px solid #e5e7eb;
+            padding: 12px;
+            border-radius: 8px;
             font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.8);
-            animation: slideInLeft 0.4s ease-out forwards;
-        }
-
-        @keyframes slideInLeft {
-            from { opacity: 0; transform: translateX(-20px); }
-            to { opacity: 1; transform: translateX(0); }
+            color: #4b5563;
         }
 
         .history-header {
@@ -250,7 +278,7 @@
             justify-content: space-between;
             margin-bottom: 8px;
             padding-bottom: 8px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid #f3f4f6;
         }
 
         .risk-badge {
@@ -259,17 +287,15 @@
             font-size: 0.75rem;
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
         }
 
-        /* Dynamic risk colors */
-        .risk-High { background: rgba(239, 68, 68, 0.2); color: #fca5a5; border: 1px solid rgba(239, 68, 68, 0.3); }
-        .risk-Medium { background: rgba(245, 158, 11, 0.2); color: #fcd34d; border: 1px solid rgba(245, 158, 11, 0.3); }
-        .risk-Low { background: rgba(16, 185, 129, 0.2); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.3); }
+        .risk-High { background: #fee2e2; color: #991b1b; }
+        .risk-Medium { background: #fef3c7; color: #92400e; }
+        .risk-Low { background: #d1fae5; color: #065f46; }
         
         .snippet {
             font-style: italic;
-            color: rgba(255,255,255,0.5);
+            color: #6b7280;
             margin-top: 8px;
             display: block;
             white-space: nowrap;
@@ -280,34 +306,112 @@
 </head>
 
 <body>
-    <div class="bg-shape shape1"></div>
-    <div class="bg-shape shape2"></div>
 
     <div class="dashboard-wrapper">
-        <div class="panel input-panel">
-            <h1>✨ Churn Predictor</h1>
+        
+        <div class="branding-panel">
+            <div>
+                <div class="logo">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                    Churn AI
+                </div>
+                
+                <div class="branding-text">
+                    <h2>Stop churn before it happens.</h2>
+                </div>
+
+                <div class="branding-desc">
+                    <p>Churn AI is an intelligent customer retention assistant that helps businesses identify customers who are likely to cancel their subscription before they actually leave. By analyzing a customer’s support message along with key behavioral details such as complaint history, refunds taken, and subscription duration, the system predicts the probability of churn, assigns a clear risk level (Low, Medium, or High), and calculates a risk score. It also automatically generates a personalized retention message to help you respond quickly and effectively. This tool empowers support and customer success teams to prioritize high-risk users, improve engagement, and reduce churn through data-driven decisions and smart AI-powered insights.</p>
+                    
+                </div>
+            </div>
+
+            <div class="branding-footer">
+                Empowering support teams with smart, AI-driven insights.
+            </div>
+        </div>
+
+        <div class="form-panel">
+            <div class="asterisk">✱</div>
+            <h1>Predict Churn</h1>
+            <p class="subtitle">Enter customer metrics and support context to calculate their retention likelihood instantly.</p>
 
             <div class="input-group">
-                <textarea id="ticket" placeholder="Paste the customer support ticket here..."></textarea>
-                <input type="number" id="complaint" placeholder="Total Complaint Count" min="0">
-                <input type="number" id="refund" placeholder="Total Refunds Taken" min="0">
-                <input type="number" id="subscription" placeholder="Subscription Length (Months)" min="0">
+                <textarea id="ticket" placeholder=""></textarea>
+
+                <div class="input-row">
+                    <input type="number" id="complaint" placeholder="Complaint Count" min="0">
+                    <input type="number" id="refund" placeholder="Refunds Taken" min="0">
+                    <input type="number" id="subscription" placeholder="Subcription Months" min="0">
+                </div>
             </div>
 
             <button id="predictBtn" onclick="predict()">Analyze Risk</button>
 
-            <div class="result" id="output"></div>
-        </div>
+            <div class="divider">
+                <span>Results & History</span>
+            </div>
 
-        <div class="panel history-panel">
-            <h2>🕒 History</h2>
+            <div class="result" id="output"></div>
+
             <div class="history-list" id="historyList">
-                <div class="empty-history">No predictions yet. Run an analysis to see history here.</div>
+                <div class="empty-history">No predictions yet. Run an analysis above.</div>
             </div>
         </div>
     </div>
 
 <script>
+// --- Typing Animation Logic ---
+const placeholderExamples = [
+    "e.g., This is unacceptable. I’ve complained multiple times...",
+    "e.g., I’m not completely satisfied with the recent update...",
+    "e.g., Everything works well. Just needed help with resetting my password...",
+    "e.g., Worst customer service ever. I want a refund...",
+    "e.g., There have been a few bugs lately. Can you look into this?"
+];
+
+let currentExampleIndex = 0;
+let currentCharIndex = 0;
+let isDeleting = false;
+let typingSpeed = 40; // milliseconds per character when typing
+let deletingSpeed = 20; // milliseconds per character when deleting
+let pauseTime = 1500; // how long to pause before deleting
+
+function typePlaceholder() {
+    const textarea = document.getElementById('ticket');
+    const currentString = placeholderExamples[currentExampleIndex];
+
+    // Build the string up or tear it down
+    if (isDeleting) {
+        textarea.setAttribute('placeholder', currentString.substring(0, currentCharIndex));
+        currentCharIndex--;
+    } else {
+        textarea.setAttribute('placeholder', currentString.substring(0, currentCharIndex));
+        currentCharIndex++;
+    }
+
+    // Determine current speed based on whether we are deleting or typing
+    let currentSpeed = isDeleting ? deletingSpeed : typingSpeed;
+
+    // Logic for pausing and switching directions
+    if (!isDeleting && currentCharIndex === currentString.length + 1) {
+        isDeleting = true;
+        currentSpeed = pauseTime; // Pause at the end of the full sentence
+    } else if (isDeleting && currentCharIndex === 0) {
+        isDeleting = false;
+        currentExampleIndex = (currentExampleIndex + 1) % placeholderExamples.length;
+        currentSpeed = 500; // Small pause before starting the next string
+    }
+
+    setTimeout(typePlaceholder, currentSpeed);
+}
+
+// Start the typing animation when the page loads
+document.addEventListener("DOMContentLoaded", () => {
+    typePlaceholder();
+});
+// ------------------------------
+
 // Array to store previous predictions
 let predictionHistory = [];
 
@@ -342,13 +446,12 @@ async function predict() {
         const result = await response.json();
 
         outputDiv.innerHTML = `
-            <h3 style="margin-bottom:12px; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:8px;">Current Analysis</h3>
             <p>Churn Probability: <strong>${(result.churn_probability * 100).toFixed(1)}%</strong></p>
             <p>Risk Score: <strong>${result.risk_score.toFixed(1)}</strong></p>
-            <p>Risk Level: <strong>${result.risk_level}</strong></p>
-            <div style="margin-top:15px; font-size: 0.85rem; color: rgba(255,255,255,0.7);">
+            <p>Risk Level: <strong class="risk-badge risk-${result.risk_level}">${result.risk_level}</strong></p>
+            <div style="margin-top:15px; font-size: 0.85rem; color: #4b5563;">
                 <strong>Retention Message:</strong>
-                <p style="margin-top:8px; line-height:1.5;">${result.retention_email || 'No message provided.'}</p>
+                <p style="margin-top:8px; line-height:1.5; background: #fff; padding: 10px; border-radius: 6px; border: 1px solid #e5e7eb;">${result.retention_email || 'No message provided.'}</p>
             </div>
         `;
 
@@ -362,7 +465,7 @@ async function predict() {
         });
 
     } catch (error) {
-        outputDiv.innerHTML = `<p style="color: #fda4af;">Error connecting to the server. Please try again.</p>`;
+        outputDiv.innerHTML = `<p style="color: #ef4444;">Error connecting to the server. Please try again.</p>`;
         outputDiv.classList.add("show");
     } finally {
         btn.innerText = "Analyze Risk";
@@ -383,11 +486,11 @@ function addToHistory(entry) {
         historyCard.className = "history-item";
         historyCard.innerHTML = `
             <div class="history-header">
-                <span style="color: rgba(255,255,255,0.6)">${item.time}</span>
+                <span style="color: #9ca3af; font-size: 0.8rem;">${item.time}</span>
                 <span class="risk-badge ${riskClass}">${item.riskLevel}</span>
             </div>
-            <div style="margin-bottom: 6px;">
-                Probability: <strong style="color: #fff">${item.probability}%</strong>
+            <div style="margin-bottom: 4px;">
+                Probability: <strong style="color: #111">${item.probability}%</strong>
             </div>
             <span class="snippet">${item.snippet}</span>
         `;
